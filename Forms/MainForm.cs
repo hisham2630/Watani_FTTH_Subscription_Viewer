@@ -403,7 +403,8 @@ public partial class MainForm : Form
                     Phone = sub.PhoneNumber,
                     BundleName = sub.BaseServiceName,
                     ExpiresLocal = sub.ExpiresLocal,
-                    Status = sub.Status
+                    Status = sub.Status,
+                    DeviceUsername = sub.Username
                 });
             }
         }
@@ -419,12 +420,19 @@ public partial class MainForm : Form
                     Phone = sub.PhoneNumber,
                     BundleName = sub.BaseServiceName,
                     ExpiresLocal = sub.ExpiresLocal,
-                    Status = sub.Status
+                    Status = sub.Status,
+                    DeviceUsername = sub.Username
                 });
             }
         }
 
-        using var form = new WhatsAppForm(_settingsManager, targets, allTargets);
-        form.ShowDialog(this);
+        var form = new WhatsAppForm(_settingsManager, targets, allTargets);
+        this.Enabled = false;
+        form.FormClosed += (_, _) =>
+        {
+            this.Enabled = true;
+            this.Activate();
+        };
+        form.Show(this);
     }
 }

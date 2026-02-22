@@ -21,4 +21,20 @@ public class AppSettings
 
     [JsonPropertyName("location_coords")]
     public string LocationCoords { get; set; } = string.Empty;
+
+    [JsonPropertyName("allowed_suffixes")]
+    public List<string> AllowedSuffixes { get; set; } = new()
+    {
+        "NOMMOR", "NOMOO", "NOMOON", "NOMOOR", "NOMOORD", "NOMOR"
+    };
+
+    [JsonPropertyName("blocked_suffixes")]
+    public List<string> BlockedSuffixes { get; set; } = new()
+    {
+        "ALZAEIM", "ALZAIEM", "ALZIAEM", "DUKAN", "GNEL",
+        "GNRL", "MUS", "OM", "TMT", "VAIO", "ZAIN"
+    };
+
+    [JsonPropertyName("filter_tab_index")]
+    public int FilterTabIndex { get; set; } = 1;
 }

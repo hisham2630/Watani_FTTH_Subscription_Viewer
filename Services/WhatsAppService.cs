@@ -17,6 +17,7 @@ public class SendTarget
     public string BundleName { get; set; } = string.Empty;
     public DateTime ExpiresLocal { get; set; }
     public string Status { get; set; } = string.Empty;
+    public string DeviceUsername { get; set; } = string.Empty;
 }
 
 public class WhatsAppService
